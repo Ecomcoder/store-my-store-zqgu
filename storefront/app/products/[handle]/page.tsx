@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { ReviewsWidget } from '@/components/modules/reviews/ReviewsWidget'
 
 export const revalidate = 3600 // ISR: revalidate every hour
 import { medusaServerClient } from '@/lib/medusa-client'
@@ -201,6 +202,16 @@ export default async function ProductPage({
               description={product.description}
               details={product.metadata as Record<string, string> | undefined}
             />
+          </div>
+        </div>
+      </div>
+
+      {/* Reviews Section */}
+      <div className="border-t">
+        <div className="container-custom py-12">
+          <h2 className="text-h3 font-heading font-semibold mb-8">Customer Reviews</h2>
+          <div className="max-w-2xl">
+            <ReviewsWidget productId={product.id} />
           </div>
         </div>
       </div>
